@@ -19,10 +19,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //  0.      -'
 
   KEYMAP(
-    SHIFT(KC_8),   KC_7,    KC_8,    KC_9,    KC_0,            SHIFT(KC_BSLS), KC_LBRC,        KC_RBRC,        KC_BSLS,     SHIFT(KC_1),\
+    SHIFT(KC_8),   KC_7,    KC_8,    KC_9,    KC_0,            SHIFT(KC_BSLS), KC_LBRC,        KC_RBRC,        SHIFT(KC_3), SHIFT(KC_1),\
     SHIFT(KC_EQL), KC_4,    KC_5,    KC_6,    KC_GRAVE,        SHIFT(KC_2),    SHIFT(KC_9),    SHIFT(KC_0),    SHIFT(KC_6), SHIFT(KC_4),\
-    KC_EQL,        KC_1,    KC_2,    KC_3,    SHIFT(KC_GRAVE), SHIFT(KC_7),    SHIFT(KC_LBRC), SHIFT(KC_RBRC), SHIFT(KC_5), SHIFT(KC_3),\
-    KC_TRNS,       KC_0,    KC_DOT,  KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,  KC_TRNS,        KC_TRNS,     KC_TRNS), \
+    KC_EQL,        KC_1,    KC_2,    KC_3,    SHIFT(KC_GRAVE), SHIFT(KC_7),    SHIFT(KC_LBRC), SHIFT(KC_RBRC), SHIFT(KC_5), KC_BSLS,    \
+    KC_TRNS,       KC_0,    KC_DOT,  KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,   SHIFT(KC_MINS), SHIFT(KC_QUOT), KC_TRNS),\
 
   // 2: arrows and function keys
   KEYMAP(
