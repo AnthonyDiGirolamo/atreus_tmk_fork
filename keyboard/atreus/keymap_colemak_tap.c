@@ -13,9 +13,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // 1: punctuation and numbers
 
-  // *7890  |[]\!
+  // *7890  |[]#!
   // +456`  @()^$
-  // =123~  &{}%#
+  // =123~  &{}%\
   //  0.      -'
 
   KEYMAP(
@@ -28,9 +28,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KEYMAP(
      KC_INS,   KC_F7,    KC_F8,    KC_F9,    KC_F10,                       KC_HOME,  KC_RGHT,  KC_END,   KC_PGUP,  KC_PSCR, \
      KC_DEL,   KC_F4,    KC_F5,    KC_F6,    KC_F11,                       KC_LEFT,  KC_DOWN,  KC_UP,    KC_PGDN,  KC_PAUSE, \
-     KC_CAPS,  KC_F1,    KC_F2,    KC_F3,    KC_F12,                       KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO, \
-     KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_FN2)
+     KC_CAPS,  KC_F1,    KC_F2,    KC_F3,    KC_F12,                       KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_F13,   KC_F14, \
+     KC_FN7,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_FN2)
 };
+
+enum macro_id {
+  ECHOH,
+};
+
+/*
+ * Macro definition
+ */
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+    switch (id) {
+        case ECHOH:
+          return (record->event.pressed ?
+              MACRO( D(LCTRL), T(C), U(LCTRL), T(E), T(C), T(H), T(O), T(SPC), T(MINS), T(E), T(SPC), D(LSHIFT), T(QUOT), U(LSHIFT), T(BSLS), T(0), T(3), T(3), D(LSHIFT), T(9), U(LSHIFT), T(0), D(LSHIFT), T(QUOT), U(LSHIFT), T(SPC), T(SCLN), T(SPC), T(C), T(L), T(E),T(A), T(R), T(ENT), END) :
+              MACRO_NONE);
+    }
+    return MACRO_NONE;
+}
+
 
 const uint16_t PROGMEM fn_actions[] = {
   /* [0] = ACTION_LAYER_TAP_TOGGLE(1), */
@@ -43,6 +62,7 @@ const uint16_t PROGMEM fn_actions[] = {
   [5] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_SPC),
   /* [6] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_BSPC), */
   [6] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_BSPC),
+  [7] = ACTION_MACRO(ECHOH),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
