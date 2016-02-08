@@ -9,7 +9,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_Q,     KC_W,     KC_F,     KC_P,     KC_G,                        KC_J,     KC_L,    KC_U,     KC_Y,     KC_SCLN, \
      KC_A,     KC_R,     KC_S,     KC_T,     KC_D,                        KC_H,     KC_N,    KC_E,     KC_I,     KC_O, \
      KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                        KC_K,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH, \
-     KC_ESC,   KC_LGUI,   KC_TAB,   KC_FN1,   KC_FN6,  KC_FN3,   KC_FN4,   KC_FN5,   KC_FN0,  KC_MINS,  KC_QUOT,  KC_ENT), \
+     KC_FN8,   KC_LGUI,   KC_TAB,   KC_FN1,   KC_FN6,  KC_FN3,   KC_FN4,   KC_FN5,   KC_FN0,  KC_MINS,  KC_QUOT,  KC_ENT), \
 
   // 1: punctuation and numbers
 
@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_INS,   KC_F7,    KC_F8,    KC_F9,    KC_F10,                       KC_HOME,  KC_RGHT,  KC_END,   KC_PGUP,  KC_PSCR, \
      KC_DEL,   KC_F4,    KC_F5,    KC_F6,    KC_F11,                       KC_LEFT,  KC_DOWN,  KC_UP,    KC_PGDN,  KC_PAUSE, \
      KC_CAPS,  KC_F1,    KC_F2,    KC_F3,    KC_F12,                       KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_F13,   KC_F14, \
-     KC_FN7,   KC_FN8,   KC_FN9,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_FN2)
+     KC_FN7,   KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_FN2)
 };
 
 enum macro_id {
@@ -215,8 +215,9 @@ const uint16_t PROGMEM fn_actions[] = {
   /* [6] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_BSPC), */
   [6] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_BSPC),
   [7] = ACTION_MACRO(ECHOH),
-  [8] = ACTION_MACRO(SHUFFLEFILES),
-  [9] = ACTION_MACRO(GITCOMMIT),
+  [8] = ACTION_MODS_TAP_KEY(MOD_LGUI | MOD_LCTL | MOD_ALT, KC_ESC),
+  /* [8] = ACTION_MACRO(SHUFFLEFILES), */
+  /* [9] = ACTION_MACRO(GITCOMMIT), */
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
