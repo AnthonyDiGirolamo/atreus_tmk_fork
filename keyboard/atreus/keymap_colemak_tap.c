@@ -33,8 +33,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // 3: macros
   KEYMAP(
-  KC_NO,    KC_BTN1,  KC_MS_U,  KC_BTN2,  KC_NO,    /*      */      KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  \
-  KC_BTN2,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_NO,    /*      */      KC_NO,  KC_NO,  KC_FN10,  KC_NO,  KC_NO,  \
+  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    /*      */      KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  \
+  KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,    /*      */      KC_NO,  KC_NO,  KC_FN10,  KC_NO,  KC_NO,  \
   KC_NO,    KC_NO,    KC_FN9,   KC_NO,    KC_NO,    /*      */      KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_NO,  \
   KC_FN2,   KC_NO,    KC_NO,    KC_NO,    KC_BTN1,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,    KC_NO,  KC_FN8)
 };
