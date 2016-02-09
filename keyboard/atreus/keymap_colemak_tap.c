@@ -3,13 +3,13 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // 0: colemak
   KEYMAP(
-     /* KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,                        KC_Y,     KC_U,    KC_I,     KC_O,     KC_P,    \ */
-     /* KC_A,     KC_S,     KC_D,     KC_F,     KC_G,                        KC_H,     KC_J,    KC_K,     KC_L,     KC_SCLN, \ */
-     /* KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                        KC_N,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH, \ */
-     KC_Q,     KC_W,     KC_F,     KC_P,     KC_G,                        KC_J,     KC_L,    KC_U,     KC_Y,     KC_SCLN, \
-     KC_A,     KC_R,     KC_S,     KC_T,     KC_D,                        KC_H,     KC_N,    KC_E,     KC_I,     KC_O, \
-     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                        KC_K,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH, \
-     KC_FN8,   KC_LGUI,   KC_TAB,   KC_FN1,   KC_FN6,  KC_FN3,   KC_FN4,   KC_FN5,   KC_FN0,  KC_MINS,  KC_QUOT,  KC_ENT), \
+  /*  Q  W  E  R  T      Y  U  I     O    P     */
+  /*  A  S  D  F  G      H  J  K     L    SCLN  */
+  /*  Z  X  C  V  B      N  M  COMM  DOT  SLSH  */
+     KC_Q,     KC_W,     KC_F,     KC_P,     KC_G,                        KC_J,     KC_L,    KC_U,     KC_Y,     KC_SCLN,  \
+     KC_A,     KC_R,     KC_S,     KC_T,     KC_D,                        KC_H,     KC_N,    KC_E,     KC_I,     KC_O,     \
+     KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,                        KC_K,     KC_M,    KC_COMM,  KC_DOT,   KC_SLSH,  \
+     KC_FN7,   KC_LGUI,   KC_TAB,   KC_FN1,   KC_FN6,  KC_FN3,   KC_FN4,   KC_FN5,   KC_FN0,  KC_MINS,  KC_QUOT,  KC_FN8), \
 
   // 1: punctuation and numbers
 
@@ -30,6 +30,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_DEL,   KC_F4,    KC_F5,    KC_F6,    KC_F11,                       KC_LEFT,  KC_DOWN,  KC_UP,    KC_PGDN,  KC_PAUSE, \
      KC_CAPS,  KC_F1,    KC_F2,    KC_F3,    KC_F12,                       KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_F13,   KC_F14, \
      KC_FN7,   KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_FN2)
+
+  // 3: macros
+  KEYMAP(
+     KC_NO,  KC_NO,  KC_NO,   KC_NO,  KC_NO,                  KC_NO,  KC_NO,  KC_NO,   KC_NO,  KC_NO,  \
+     KC_NO,  KC_NO,  KC_NO,   KC_NO,  KC_NO,                  KC_NO,  KC_NO,  KC_FN10, KC_NO,  KC_NO, \
+     KC_NO,  KC_NO,  KC_FN9,  KC_NO,  KC_NO,                  KC_NO,  KC_NO,  KC_NO,   KC_NO,  KC_NO,  \
+     KC_FN2, KC_NO,  KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,   KC_NO,  KC_NO)
 };
 
 enum macro_id {
@@ -46,54 +53,15 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
     switch (id) {
         case ECHOH:
           return (record->event.pressed ?
-              MACRO( D(LCTRL),
-                     T(C),
-                     U(LCTRL),
-                     T(E),
-                     T(C),
-                     T(H),
-                     T(O),
-                     T(SPC),
-                     T(MINS),
-                     T(E),
-                     T(SPC),
-                     D(LSHIFT),
-                     T(QUOT),
-                     U(LSHIFT),
-                     T(BSLS),
-                     T(0),
-                     T(3),
-                     T(3),
-                     D(LSHIFT),
-                     T(9),
-                     U(LSHIFT),
-                     T(0),
-                     D(LSHIFT),
-                     T(QUOT),
-                     U(LSHIFT),
-                     T(SPC),
-                     T(SCLN),
-                     T(SPC),
-                     T(C),
-                     T(L),
-                     T(E),
-                     T(A),
-                     T(R),
-                     T(ENT),
+              MACRO( D(LCTRL), T(C), U(LCTRL), T(E), T(C), T(H), T(O), T(SPC), T(MINS), T(E), T(SPC),
+                     D(LSHIFT), T(QUOT), U(LSHIFT), T(BSLS), T(0), T(3), T(3), D(LSHIFT), T(9), U(LSHIFT), T(0), D(LSHIFT), T(QUOT), U(LSHIFT), T(SPC),
+                     T(SCLN), T(SPC), T(C), T(L), T(E), T(A), T(R), T(ENT),
                      END) :
               MACRO_NONE);
 
         case SHUFFLEFILES:
           return (record->event.pressed ?
-              MACRO( D(LCTRL), T(C), U(LCTRL),
-                     T(R),
-                     T(U),
-                     T(B),
-                     T(Y),
-                     T(SPC),
-                     T(MINUS),
-                     T(E),
-                     T(SPC),
+              MACRO( D(LCTRL), T(C), U(LCTRL), T(R), T(U), T(B), T(Y), T(SPC), T(MINUS), T(E), T(SPC),
                      T(QUOT),
                      D(LSHIFT), T(D), U(LSHIFT),
                      T(I),
@@ -158,43 +126,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         case GITCOMMIT:
           return (record->event.pressed ?
               MACRO( D(LCTRL), T(C), U(LCTRL),
-                     T(G),
-                     T(I),
-                     T(T),
-                     T(SPC),
-                     T(C),
-                     T(O),
-                     T(M),
-                     T(M),
-                     T(I),
-                     T(T),
-                     T(SPC),
-                     T(MINS),
-                     T(A),
-                     T(M),
-                     T(SPC),
-                     T(QUOT),
-                     T(S),
-                     T(O),
-                     T(M),
-                     T(E),
-                     T(T),
-                     T(I),
-                     T(M),
-                     T(E),
-                     T(S),
-                     T(SPC),
-                     T(I),
-                     T(SPC),
-                     T(E),
-                     T(A),
-                     T(T),
-                     T(SPC),
-                     T(P),
-                     T(O),
-                     T(O),
-                     T(QUOT),
-                     T(ENT),
+                     T(G), T(I), T(T), T(SPC), T(C), T(O), T(M), T(M), T(I), T(T), T(SPC), T(MINS), T(A), T(ENT),
                      END) :
               MACRO_NONE);
 
@@ -212,12 +144,11 @@ const uint16_t PROGMEM fn_actions[] = {
   [3] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
   [4] = ACTION_MODS_TAP_KEY(MOD_LALT, KC_ENT),
   [5] = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_SPC),
-  /* [6] = ACTION_MODS_TAP_KEY(MOD_LGUI, KC_BSPC), */
   [6] = ACTION_MODS_TAP_KEY(MOD_LSFT, KC_BSPC),
-  [7] = ACTION_MACRO(ECHOH),
-  [8] = ACTION_MODS_TAP_KEY(MOD_LGUI|MOD_LCTL|MOD_LALT, KC_ESC),
-  /* [8] = ACTION_MACRO(SHUFFLEFILES), */
-  /* [9] = ACTION_MACRO(GITCOMMIT), */
+  [7] = ACTION_MODS_TAP_KEY(MOD_LGUI|MOD_LCTL|MOD_LALT, KC_ESC),
+  [8] = ACTION_LAYER_TAP_KEY(3, KC_ENT),
+  [9] = ACTION_MACRO(GITCOMMIT),
+  [10] = ACTION_MACRO(ECHOH),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
